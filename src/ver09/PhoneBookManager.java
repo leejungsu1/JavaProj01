@@ -1,17 +1,14 @@
-package ver03;
+package ver09;
 
 import java.util.Scanner;
-import ver03.PhoneInfo;
+import ver09.PhoneInfo;
 
-public class PhoneBookManager {
-	
-	private PhoneInfo[] person;
-	private int numOfPerson;
+public class PhoneBookManager extends IConn{
 
-	public PhoneBookManager(int num) {
-		person = new PhoneInfo[num];
-		numOfPerson = 0;
+	public PhoneBookManager() {
+		super(ORACLE_URL, "kosmo","1234");
 	}
+	
 	public void printMenu() {
 		System.out.println("선택하세요.");
 		System.out.println("1. 데이터 입력");

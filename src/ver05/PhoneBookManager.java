@@ -25,8 +25,8 @@ public class PhoneBookManager implements SubMenuItem{
 		
 		System.out.println("데이터를 입력을 시작합니다.");
 		System.out.println("1.일반, 2.동창, 3.회사");
-		int chioce = scan.nextInt();
-		System.out.print("선택>>>"+ chioce +"\n");
+		num = scan.nextInt();
+		System.out.print("선택>>>"+ num +"\n");
 		System.out.print("이름:");
 		name = scan.next();
 		System.out.print("전화번호:");

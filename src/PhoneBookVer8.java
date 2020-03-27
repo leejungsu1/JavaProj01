@@ -1,17 +1,17 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import ver07.MenuItem;
-import ver07.MenuSelectException;
-import ver07.PhoneBookManager;
-import ver07.PhoneInfo;
+import ver08.MenuItem;
+import ver08.MenuSelectException;
+import ver08.PhoneBookManager;
+import ver08.PhoneInfo;
 
-public class PhoneBookVer7 {
+public class PhoneBookVer8 {
 
 	public static void main(String[] args) {
 		
 		PhoneBookManager phoneBook = new PhoneBookManager(100);
-		
+		phoneBook.readData();
 		while(true) {
 			try {
 				phoneBook.printMenu();
@@ -31,6 +31,7 @@ public class PhoneBookVer7 {
 					phoneBook.dataAllShow();
 				}
 				else if(num==5) {
+					phoneBook.saveData();
 					System.out.println("프로그램을 종료합니다.");
 					break;
 				}

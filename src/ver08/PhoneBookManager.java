@@ -1,5 +1,13 @@
-package ver07;
+package ver08;
 
+import java.awt.geom.FlatteningPathIterator;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -168,5 +176,42 @@ public class PhoneBookManager implements SubMenuItem{
 			per.showPhoneInfo();
 		}
 		System.out.println("주소록 출력이 완료되었습니다.");
+	}
+	public void saveData() {
+		
+		try {
+			ObjectOutputStream out = 
+					new ObjectOutputStream(new FileOutputStream("src/ver08/PhoneBook.obj"));
+			
+			out.writeObject(person);
+			out.writeObject(null);
+			out.close();
+		}
+		catch(FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public void readData() {
+		try {
+			ObjectInputStream in =
+					new ObjectInputStream(new FileInputStream("src/ver08/PhoneBook.obj"));
+			while(true) {
+				HashSet<PhoneInfo> p = (HashSet<PhoneInfo>)in.readObject();
+				if(p==null)break;
+				person = p;
+			}
+		}
+		catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

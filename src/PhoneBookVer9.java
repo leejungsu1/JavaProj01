@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
-import ver03.PhoneBookManager;
-import ver03.PhoneInfo;
+import ver09.PhoneBookManager;
+import ver09.PhoneInfo;
 
-public class PhoneBookVer3 {
+public class PhoneBookVer9 {
 
 	public static void main(String[] args) {
 		
