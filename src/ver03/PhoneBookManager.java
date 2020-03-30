@@ -7,6 +7,7 @@ public class PhoneBookManager {
 	
 	private PhoneInfo[] person;
 	private int numOfPerson;
+	String name, phoneNumber, birthday;
 
 	public PhoneBookManager(int num) {
 		person = new PhoneInfo[num];
@@ -22,7 +23,6 @@ public class PhoneBookManager {
 	}
 	public void  dataInput (int num) {
 		Scanner scan = new Scanner(System.in);
-		String name, phoneNumber, birthday;
 		
 		System.out.println("데이터를 입력을 시작합니다.");
 		System.out.print("이름:");
@@ -44,7 +44,7 @@ public class PhoneBookManager {
 		for(int i=0; i<numOfPerson ; i++) {
 			
 			if(SearchName.compareTo(person[i].name)==0) {
-				dataAllShow();
+				person[i].showPhoneInfo();
 				System.out.println("데이터 검색이 완료되었습니다.");
 			}
 		}

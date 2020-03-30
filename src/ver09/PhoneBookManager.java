@@ -3,12 +3,16 @@ package ver09;
 import java.util.Scanner;
 import ver09.PhoneInfo;
 
-public class PhoneBookManager extends IConn{
-
-	public PhoneBookManager() {
-		super(ORACLE_URL, "kosmo","1234");
-	}
+public class PhoneBookManager {
 	
+	private PhoneInfo[] person;
+	private int numOfPerson;
+	String name, phoneNumber, birthday;
+
+	public PhoneBookManager(int num) {
+		person = new PhoneInfo[num];
+		numOfPerson = 0;
+	}
 	public void printMenu() {
 		System.out.println("선택하세요.");
 		System.out.println("1. 데이터 입력");
@@ -28,9 +32,11 @@ public class PhoneBookManager extends IConn{
 		phoneNumber = scan.next();
 		System.out.print("생년월일:");
 		birthday = scan.next();
+		
+		new Insert(name, phoneNumber, birthday).execute();
 		person[numOfPerson++] = new PhoneInfo(name, phoneNumber, birthday);
 		
-		System.out.println("데이터를 입력을 완료되었습니다.");
+		System.out.println("데이터 입력을 완료되었습니다.");
 	}
 	public void dataSearch() {
 		Scanner scan = new Scanner(System.in);
@@ -41,7 +47,8 @@ public class PhoneBookManager extends IConn{
 		for(int i=0; i<numOfPerson ; i++) {
 			
 			if(SearchName.compareTo(person[i].name)==0) {
-				dataAllShow();
+				person[i].showPhoneInfo();
+				new Search(SearchName).execute();;
 				System.out.println("데이터 검색이 완료되었습니다.");
 			}
 		}
@@ -49,12 +56,13 @@ public class PhoneBookManager extends IConn{
 	public void dataDelete() {
 		Scanner scan = new Scanner(System.in);
 		System.out.print("이름:");
-		String deleteName = scan.nextLine();
+		String deleteName = scan.next();
 		
 		int deleteIndex = -1;
 		
 		for(int i=0 ; i<numOfPerson ; i++) {
 			if(deleteName.compareTo(person[i].name)==0) {
+				new Delete(deleteName).execute();
 				person[i] = null;
 				
 				deleteIndex = i;
