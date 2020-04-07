@@ -5,6 +5,7 @@ public class PhoneInfo {
 	String name;
 	String phoneNumber; 
 	String birthday;
+	
 	//생성자
 	public PhoneInfo(String name, String phoneNumber, String birthday) {
 		this.name = name;
